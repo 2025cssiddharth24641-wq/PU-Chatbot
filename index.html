@@ -22,75 +22,151 @@
   </div>
 
   <div class="app">
-    <div class="header">
-      <div class="hdr-left">
-        <div class="logo">🎓</div>
-        <div class="hdr-title">
-          <div class="hdr-name">PU <span>Assistant</span> <span class="hdr-badge">AI</span></div>
-          <div class="hdr-sub">
-            <div class="live"></div>
-            Poornima University · 24/7
+
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="sb-icon">🎓</div>
+          <div class="sb-title">PU <span>Assistant</span></div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="#" data-nav="chat">
+          <i class="fas fa-comments"></i><span>Chat</span>
+        </a>
+        <a class="nav-item" href="#" data-query="Tell me about Poornima University">
+          <i class="fas fa-university"></i><span>About PU</span>
+        </a>
+        <a class="nav-item" href="#" data-query="How to apply for admission?">
+          <i class="fas fa-clipboard-list"></i><span>Admissions</span>
+        </a>
+        <a class="nav-item" href="#" data-query="What courses are offered?">
+          <i class="fas fa-book-open"></i><span>Courses</span>
+        </a>
+        <a class="nav-item" href="#" data-query="Tell me about placements">
+          <i class="fas fa-briefcase"></i><span>Placements</span>
+        </a>
+        <a class="nav-item" href="#" data-query="What is the fee structure?">
+          <i class="fas fa-indian-rupee-sign"></i><span>Fees</span>
+        </a>
+        <a class="nav-item" href="#" data-query="Hostel facilities">
+          <i class="fas fa-building"></i><span>Hostel</span>
+        </a>
+        <a class="nav-item" href="#" data-query="Scholarship schemes">
+          <i class="fas fa-medal"></i><span>Scholarships</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-label">Links</div>
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="https://poornima.edu.in" target="_blank">
+          <i class="fas fa-globe"></i><span>Official Portal</span>
+          <i class="fas fa-arrow-up-right-from-square nav-ext"></i>
+        </a>
+        <a class="nav-item" href="#" data-query="Contact details">
+          <i class="fas fa-phone"></i><span>Contact</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="plan-card">
+        <div class="plan-top">
+          <span class="plan-tier">Free Plan</span>
+          <span class="plan-badge-tag">ACTIVE</span>
+        </div>
+        <p class="plan-desc">Access priority support &amp; the full application portal on the official website.</p>
+        <a class="upgrade-btn" href="https://poornima.edu.in" target="_blank">
+          <i class="fas fa-bolt"></i> Visit Official Portal
+        </a>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ── Main Panel ── -->
+    <div class="main-panel">
+
+      <div class="header">
+        <div class="hdr-left">
+          <button class="hdr-btn menu-btn" id="menuBtn" aria-label="Toggle sidebar" title="Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo">🎓</div>
+          <div class="hdr-title">
+            <div class="hdr-name">PU <span>Assistant</span> <span class="hdr-badge">AI</span></div>
+            <div class="hdr-sub">
+              <div class="live"></div>
+              Poornima University · 24/7
+            </div>
+          </div>
+        </div>
+        <div class="hdr-right">
+          <button class="hdr-btn" id="clearBtn" aria-label="Clear chat" title="Clear chat">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="suggestions" id="sugBar">
+        <button class="sug-btn" data-query="Tell me about Poornima University"><span>🏛️ About PU</span></button>
+        <button class="sug-btn" data-query="How to apply for admission?"><span>📋 Admission</span></button>
+        <button class="sug-btn" data-query="What courses are offered?"><span>📚 Courses</span></button>
+        <button class="sug-btn" data-query="What is the fee structure?"><span>💰 Fees</span></button>
+        <button class="sug-btn" data-query="Tell me about placements"><span>💼 Placements</span></button>
+        <button class="sug-btn" data-query="Hostel facilities"><span>🏠 Hostel</span></button>
+        <button class="sug-btn" data-query="Scholarship schemes"><span>🎖️ Scholarships</span></button>
+        <button class="sug-btn" data-query="Campus facilities"><span>🏫 Facilities</span></button>
+      </div>
+
+      <div class="chat" id="chat">
+        <div class="divider" id="todayDiv">Today</div>
+
+        <div class="welcome" id="welcomeCard">
+          <div class="welcome-badge">Poornima University · Est. 2012</div>
+          <h2>Hello! I'm your <em>Campus AI</em> 👋</h2>
+          <p>Ask me anything about Poornima University — admissions, courses, fees, placements, and more.</p>
+          <div class="quick-grid">
+            <button class="qk" data-query="How to apply for admission?"><span class="qi">📋</span>Admissions</button>
+            <button class="qk" data-query="What courses are offered?"><span class="qi">📚</span>Courses</button>
+            <button class="qk" data-query="What is the fee structure?"><span class="qi">💰</span>Fees</button>
+            <button class="qk" data-query="Tell me about placements"><span class="qi">💼</span>Placements</button>
+          </div>
+        </div>
+
+        <div class="typing" id="typing">
+          <div class="av bot-av">🎓</div>
+          <div class="typing-bubble">
+            <div class="td"></div><div class="td"></div><div class="td"></div>
           </div>
         </div>
       </div>
-      <div class="hdr-right">
-        <button class="hdr-btn" id="clearBtn" aria-label="Clear chat" title="Clear chat">
-          <i class="fas fa-rotate-left"></i>
-        </button>
-      </div>
-    </div>
 
-    <div class="suggestions" id="sugBar">
-      <button class="sug-btn" data-query="Tell me about Poornima University"><span>🏛️ About PU</span></button>
-      <button class="sug-btn" data-query="How to apply for admission?"><span>📋 Admission</span></button>
-      <button class="sug-btn" data-query="What courses are offered?"><span>📚 Courses</span></button>
-      <button class="sug-btn" data-query="What is the fee structure?"><span>💰 Fees</span></button>
-      <button class="sug-btn" data-query="Tell me about placements"><span>💼 Placements</span></button>
-      <button class="sug-btn" data-query="Hostel facilities"><span>🏠 Hostel</span></button>
-      <button class="sug-btn" data-query="Scholarship schemes"><span>🎖️ Scholarships</span></button>
-      <button class="sug-btn" data-query="Campus facilities"><span>🏫 Facilities</span></button>
-    </div>
-
-    <div class="chat" id="chat">
-      <div class="divider" id="todayDiv">Today</div>
-
-      <div class="welcome" id="welcomeCard">
-        <div class="welcome-badge">Poornima University · Est. 2012</div>
-        <h2>Hello! I'm your <em>Campus AI</em> 👋</h2>
-        <p>Ask me anything about Poornima University — admissions, courses, fees, placements, and more.</p>
-        <div class="quick-grid">
-          <button class="qk" data-query="How to apply for admission?"><span class="qi">📋</span>Admissions</button>
-          <button class="qk" data-query="What courses are offered?"><span class="qi">📚</span>Courses</button>
-          <button class="qk" data-query="What is the fee structure?"><span class="qi">💰</span>Fees</button>
-          <button class="qk" data-query="Tell me about placements"><span class="qi">💼</span>Placements</button>
+      <div class="input-area">
+        <div class="input-box">
+          <input type="text" id="msgInput" placeholder="Ask about admissions, courses, fees..." maxlength="400" autocomplete="off"/>
+          <button class="voice-btn" id="voiceBtn" aria-label="Voice input" title="Voice input">
+            <i class="fas fa-microphone"></i>
+          </button>
+          <button class="send-btn" id="sendBtn" aria-label="Send message">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="input-meta">
+          <span id="charCount">0 / 400 chars</span>
+          <div class="author-credit">Made by Siddharth <span>❤️</span></div>
+          <a href="https://poornima.edu.in" target="_blank">🌐 poornima.edu.in</a>
         </div>
       </div>
 
-      <div class="typing" id="typing">
-        <div class="av bot-av">🎓</div>
-        <div class="typing-bubble">
-          <div class="td"></div><div class="td"></div><div class="td"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="input-area">
-      <div class="input-box">
-        <input type="text" id="msgInput" placeholder="Ask about admissions, courses, fees..." maxlength="400" autocomplete="off"/>
-        <button class="voice-btn" id="voiceBtn" aria-label="Voice input" title="Voice input">
-          <i class="fas fa-microphone"></i>
-        </button>
-        <button class="send-btn" id="sendBtn" aria-label="Send message">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-      <div class="input-meta">
-        <span id="charCount">0 / 400 chars</span>
-        <div class="author-credit">Made by Siddharth <span>❤️</span></div>
-        <a href="https://poornima.edu.in" target="_blank">🌐 poornima.edu.in</a>
-      </div>
-    </div>
-  </div>
+    </div><!-- /.main-panel -->
+  </div><!-- /.app -->
 
   <script src="PU.js"></script>
 </body>

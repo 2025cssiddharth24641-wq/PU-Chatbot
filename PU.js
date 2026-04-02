@@ -695,3 +695,44 @@ window.onload = () => {
     document.getElementById('msgInput').focus();
   }, 3000);
 };
+
+/* ── Sidebar toggle ── */
+const sidebar        = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const menuBtn        = document.getElementById('menuBtn');
+const sidebarClose   = document.getElementById('sidebarClose');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('show');
+}
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('show');
+}
+
+menuBtn.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+/* Sidebar nav-item clicks: send the query and close on mobile */
+document.querySelectorAll('.sidebar .nav-item[data-query]').forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('.sidebar .nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+    document.getElementById('msgInput').value = item.dataset.query;
+    sendMessage();
+    closeSidebar();
+  });
+});
+
+/* "Chat" nav item — just marks itself active */
+document.querySelectorAll('.sidebar .nav-item[data-nav]').forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('.sidebar .nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+    closeSidebar();
+  });
+});
