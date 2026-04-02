@@ -636,10 +636,16 @@ function updateCharCount() {
 
 document.body.addEventListener('click', (e) => {
   const interactiveElement = e.target.closest('[data-query]');
-  if (interactiveElement) {
-    document.getElementById('msgInput').value = interactiveElement.dataset.query;
-    sendMessage();
+  if (!interactiveElement) return;
+  e.preventDefault();
+  const sidebarItem = interactiveElement.closest('.sidebar .nav-item');
+  if (sidebarItem) {
+    document.querySelectorAll('.sidebar .nav-item').forEach(n => n.classList.remove('active'));
+    sidebarItem.classList.add('active');
+    closeSidebar();
   }
+  document.getElementById('msgInput').value = interactiveElement.dataset.query;
+  sendMessage();
 });
 
 document.getElementById('sendBtn').addEventListener('click', sendMessage);
@@ -714,18 +720,6 @@ function closeSidebar() {
 menuBtn.addEventListener('click', openSidebar);
 sidebarClose.addEventListener('click', closeSidebar);
 sidebarOverlay.addEventListener('click', closeSidebar);
-
-/* Sidebar nav-item clicks: send the query and close on mobile */
-document.querySelectorAll('.sidebar .nav-item[data-query]').forEach(item => {
-  item.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelectorAll('.sidebar .nav-item').forEach(n => n.classList.remove('active'));
-    item.classList.add('active');
-    document.getElementById('msgInput').value = item.dataset.query;
-    sendMessage();
-    closeSidebar();
-  });
-});
 
 /* "Chat" nav item — just marks itself active */
 document.querySelectorAll('.sidebar .nav-item[data-nav]').forEach(item => {
